@@ -1,0 +1,17 @@
+---
+- name: "Install Git"
+  package:
+    name: "git"
+    state: present
+
+- name: "Set global git configuration"
+  git_config:
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    scope: global
+  loop: "{{ git.gitconfig }}"
+
+- name: "Install global gitignore"
+  copy:
+    src: "gitignore"
+    dest: "~/.gitignore"

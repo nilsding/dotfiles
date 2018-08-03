@@ -1,0 +1,18 @@
+---
+git:
+  gitconfig:
+  - { name: "user.name", value: "Georg Gadinger" }
+  - { name: "user.email", value: "nilsding@nilsding.org" }
+  - { name: "push.default", value: "simple" }
+  - { name: "url.https://github.com/.insteadof", value: "gh:" }
+  - { name: "url.ssh://git@github.com/.pushinsteadof", value: "gh:" }
+  - { name: "url.ssh://git@git.rrerr.net/.insteadof", value: "rrerr:" }
+  - { name: "url.ssh://git@git.rrerr.net/.pushinsteadof", value: "rrerr:" }
+  - { name: "alias.commend", value: "commit --amend --no-edit" }
+  - { name: "alias.lg", value: "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%C(reset) %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative" }
+  - { name: "alias.grog", value: "log --graph --abbrev-commit --decorate --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)'" }
+  - { name: "alias.assume", value: "update-index --assume-unchanged" }
+  - { name: "alias.unassume", value: "update-index --no-assume-unchanged" }
+  - { name: "alias.assumed", value: "!git ls-files -v | grep ^h | cut -c 3-" }
+  - { name: "core.excludesfile", value: "~/.gitignore" }
+  - { name: "rebase.autosquash", value: "true" }
