@@ -19,6 +19,8 @@
   user:
     name: "{{ ansible_user_id }}"
     shell: "{{ zsh_path }}"
+  become: true
+  become_user: root
 
 - name: Setup oh-my-zsh
   import_tasks: oh_my_zsh.yml
