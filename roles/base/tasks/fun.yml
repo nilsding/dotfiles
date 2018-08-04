@@ -1,0 +1,26 @@
+---
+
+- name: "Install fun packages"
+  package:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - cowsay
+    - figlet
+    - fortune
+
+- name: "Install custom cowsay cows to ~/.local/share/cows"
+  copy:
+    src: "{{ item }}"
+    dest: "~/.local/share/{{ item }}"
+  loop:
+    - cows/fox.cow
+    - cows/parrot.cow
+
+- name: "Install rrerrNet fortunes"
+  get_url:
+    url: "https://raw.githubusercontent.com/rrerrNet/fortunes/master/{{ item }}"
+    dest: "/usr/local/share/games/fortunes/{{ item }}"
+  loop:
+    - rrerrnet
+    - rrerrnet.dat

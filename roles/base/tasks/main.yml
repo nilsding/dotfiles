@@ -1,0 +1,30 @@
+---
+- name: "Install base packages"
+  package:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - dialog
+    - htop
+    - ncdu
+    - p7zip
+    - pngcrush
+    - screenresolution
+    - the_silver_searcher
+    - tmux
+    - xmp
+
+- name: "Install applications from cask"
+  homebrew_cask:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - emacs
+    - firefox
+    - nextcloud
+    - postgres
+    - slack
+    - telegram
+
+- name: "Setup fun things"
+  import_tasks: fun.yml
