@@ -4,13 +4,18 @@
     repo: "https://github.com/robbyrussell/oh-my-zsh.git"
     dest: "~/.oh-my-zsh"
 
-- name: "TODO: Install zshrc"
-  template:
-    src: "zshrc"
-    dest: "~/.zshrc"
-  when: "false"
+- name: "Install plugin zsh-syntax-highlighting"
+  git:
+    repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+    dest: "~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
 
 - name: "Install nilsding oh-my-zsh theme"
   copy:
     src: "oh-my-zsh/themes/nilsding.zsh-theme"
     dest: "~/.oh-my-zsh/custom/themes/nilsding.zsh-theme"
+
+- name: "Install zshrc"
+  template:
+    src: "zshrc.j2"
+    dest: "~/.zshrc"
+  tags: ["zshrc"]

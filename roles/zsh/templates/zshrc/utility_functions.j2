@@ -1,0 +1,49 @@
+###############################################################################
+# some useful functions and aliases
+###############################################################################
+
+# print out the command which is run and execute it
+__docmd() {
+  printf "\033[32;1m * \033[0;1m$*\033[0m\n"
+  $*
+}
+
+# run `git pull` for all subdirectories in the current directory or $1
+glr() {
+  subdir=${1:=.}
+  for dir in $subdir/*; do
+    if [ -d "$dir/.git" ]; then
+      printf "\033[32;1m>>> \033[0m$dir\n"
+      (cd "$dir" && __docmd git pull)
+    fi
+  done
+}
+
+# installs the ruby and bundle for a ruby repo
+init_rvm() {
+  __docmd rvm install `cat .ruby-version`
+  __docmd cd .
+  __docmd gem install bundler
+  __docmd bundle install
+}
+
+# run `ag` in a loop
+agl() { while read 'q?ag>'; do ag "$q"; done }
+
+# ;-)
+pause() { echo -n "Press any key to continue..."; read -sk1; echo }
+
+# mkdir a new directory and cd into it
+mkcd() { mkdir -p $@ && cd $@ }
+
+alias cd..='cd ..'
+alias cd...='cd ...'
+alias cd....='cd ....'
+alias cd.....='cd .....'
+alias cd......='cd ......'
+alias e='/Applications/Emacs.app/Contents/MacOS/Emacs'
+alias em='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
+alias rot13="tr '[A-Za-z]' '[N-ZA-Mn-za-m]'"
+alias gmm='git merge master'
+
+export PAGER=less

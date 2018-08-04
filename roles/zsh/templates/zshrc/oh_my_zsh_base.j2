@@ -1,0 +1,17 @@
+###############################################################################
+# oh-my-zsh configuration
+###############################################################################
+
+# Path to the oh-my-zsh installation.
+ZSH="{{ ansible_env.HOME }}/.oh-my-zsh"
+
+# Use the `nilsding` zsh theme
+ZSH_THEME="nilsding"
+
+# Use The One True Date Format™ (ISO-8601) in history output
+HIST_STAMPS="yyyy-mm-dd"
+
+# Enable zsh plugins
+plugins=(git rails cp git gem rvm ruby tmux sudo z zsh-syntax-highlighting)
+
+source $ZSH/oh-my-zsh.sh
