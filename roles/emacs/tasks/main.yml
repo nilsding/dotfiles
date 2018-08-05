@@ -20,6 +20,11 @@
     path: "~/.spacemacs.d"
     state: directory
 
+- name: "Create ~/.spacemacs.d/layers"
+  file:
+    path: "~/.spacemacs.d/layers"
+    state: directory
+
 - name: "Touch ~/.spacemacs.d/user-config.el"
   file:
     path: "~/.spacemacs.d/user-config.el"
