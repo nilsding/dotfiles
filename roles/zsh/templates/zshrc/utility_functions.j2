@@ -20,10 +20,8 @@ glr() {
 }
 
 # installs the ruby and bundle for a ruby repo
-init_rvm() {
-  __docmd rvm install `cat .ruby-version`
-  __docmd cd .
-  __docmd gem install bundler
+init_ruby() {
+  __docmd rbenv install $(cat .ruby-version | sed -e 's/^ruby-//')
   __docmd bundle install
 }
 

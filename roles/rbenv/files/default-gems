@@ -1,0 +1,6 @@
+bundler
+rake
+irbtools
+irbtools-more
+rubocop
+rt_rubocop_defaults

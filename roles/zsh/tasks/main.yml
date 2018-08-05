@@ -21,6 +21,7 @@
     shell: "{{ zsh_path }}"
   become: true
   become_user: root
+  ignore_errors: true
 
 - name: Setup oh-my-zsh
   import_tasks: oh_my_zsh.yml

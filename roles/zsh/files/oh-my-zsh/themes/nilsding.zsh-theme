@@ -15,6 +15,19 @@ function oc_prompt_info() {
   echo "${ZSH_THEME_OC_PROMPT_PREFIX:=(}${oc_prompt}${ZSH_THEME_OC_PROMPT_SUFFIX:=)}"
 }
 
+function n_rbenv_prompt_info() {
+  type rbenv >/dev/null 2>&1 || return 1
+  local rbenv_prompt
+  rbenv_prompt=$(rbenv version-name 2>/dev/null | sed -e 's/ (set.*$//' -e 's/^ruby-//')
+  [[ "${rbenv_prompt}x" == "x" ]] && return 1
+  local rbenv_gemset
+  rbenv_gemset=$(rbenv gemset active 2&>/dev/null | sed -e ":a" -e '$ s/\n/+/gp;N;b a' | head -n1)
+  if [[ "${rbenv_gemset}x" != "x" ]]; then
+    rbenv_prompt="${rbenv_prompt}@${rbenv_gemset}"
+  fi
+  echo "${ZSH_THEME_RBENV_PROMPT_PREFIX:=(}${rbenv_prompt}${ZSH_THEME_RBENV_PROMPT_SUFFIX:=)}"
+}
+
 local width
 local separator
 width=$[ $COLUMNS / 3 ]
@@ -31,7 +44,7 @@ echo $fg_bold[red]$separator$reset_color
 echo Have a lot of fun...
 
 # prompt
-PROMPT=$'%{\e[38;5;214m%}─[%{\e[38;5;255m%}%*%{$reset_color%} %{\e[38;5;39m%}%n%{\e[38;5;214m%}:%{\e[38;5;79m%}%30<...<%~%<<%{\e[38;5;214m%}]$(rvm_prompt_info)$(oc_prompt_info)$(git_prompt_info)%{\e[38;5;214m%}─%{$reset_color%}
+PROMPT=$'%{\e[38;5;214m%}─[%{\e[38;5;255m%}%*%{$reset_color%} %{\e[38;5;39m%}%n%{\e[38;5;214m%}:%{\e[38;5;79m%}%30<...<%~%<<%{\e[38;5;214m%}]$(n_rbenv_prompt_info)$(oc_prompt_info)$(git_prompt_info)%{\e[38;5;214m%}─%{$reset_color%}
 %{\e[38;5;214m%}%(!.#.%%)%{$reset_color%} '
 RPROMPT=''
 
@@ -40,9 +53,9 @@ ZSH_THEME_GIT_PROMPT_PREFIX='%{\e[38;5;214m%}─[%{\e[38;5;077m%}git:%{\033[38;5
 ZSH_THEME_GIT_PROMPT_SUFFIX='%{\e[38;5;214m%}]'
 ZSH_THEME_GIT_PROMPT_DIRTY="%{\e[38;5;226m%}!%{\e[38;5;214m%}"
 
-# rvm theming
-ZSH_THEME_RVM_PROMPT_PREFIX='%{\e[38;5;214m%}─[%{\e[38;5;160m%}rvm:%{\033[38;5;161m%}'
-ZSH_THEME_RVM_PROMPT_SUFFIX='%{\e[38;5;214m%}]'
+# rbenv theming
+ZSH_THEME_RBENV_PROMPT_PREFIX='%{\e[38;5;214m%}─[%{\e[38;5;160m%}ruby:%{\033[38;5;161m%}'
+ZSH_THEME_RBENV_PROMPT_SUFFIX='%{\e[38;5;214m%}]'
 
 # oc theming
 ZSH_THEME_OC_PROMPT_PREFIX='%{\e[38;5;214m%}─[%{\e[38;5;166m%}os%{\e[38;5;172m%}:'

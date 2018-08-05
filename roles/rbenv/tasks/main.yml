@@ -1,0 +1,50 @@
+---
+- name: "Install build dependencies"
+  package:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - openssl
+    - libyaml
+
+- name: "Checkout rbenv repo"
+  git:
+    repo: "https://github.com/rbenv/rbenv.git"
+    dest: "~/.rbenv"
+
+- name: "Create plugins directory"
+  file:
+    state: directory
+    path: "~/.rbenv/plugins"
+
+- name: "Install plugins"
+  git:
+    repo: "{{ item.repo }}"
+    dest: "~/.rbenv/plugins/{{ item.name }}"
+  loop: "{{ rbenv.plugins }}"
+
+- name: "Set default gems"
+  copy:
+    src: "default-gems"
+    dest: "~/.rbenv/default-gems"
+
+- name: "Install gemrc"
+  copy:
+    src: "gemrc"
+    dest: "~/.gemrc"
+    force: false
+
+- name: "Install irbrc"
+  copy:
+    src: "irbrc"
+    dest: "~/.irbrc"
+    force: false
+
+- name: "Install rubies"
+  shell: |-
+    $SHELL -lc "~/.rbenv/bin/rbenv install --skip-existing {{ item }}"
+  loop: "{{ rbenv.rubies }}"
+
+- name: "Set ruby {{ rbenv.default_ruby }} as default"
+  shell: |-
+    $SHELL -lc "~/.rbenv/bin/rbenv global {{ rbenv.default_ruby }} && ~/.rbenv/bin/rbenv rehash"
