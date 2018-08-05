@@ -19,7 +19,6 @@
     name: "{{ item }}"
     state: present
   loop:
-    - emacs
     - firefox
     - nextcloud
     - postgres

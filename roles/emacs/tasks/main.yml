@@ -1,0 +1,26 @@
+---
+- name: "Install Emacs from cask"
+  homebrew_cask:
+    name: emacs
+    state: present
+
+- name: "Checkout Spacemacs repo"
+  git:
+    repo: "https://github.com/syl20bnr/spacemacs.git"
+    dest: "~/.emacs.d"
+
+- name: "Install Spacemacs config"
+  copy:
+    src: "dotspacemacs"
+    dest: "~/.spacemacs"
+    force: false
+
+- name: "Create ~/.spacemacs.d"
+  file:
+    path: "~/.spacemacs.d"
+    state: directory
+
+- name: "Touch ~/.spacemacs.d/user-config.el"
+  file:
+    path: "~/.spacemacs.d/user-config.el"
+    state: touch
