@@ -13,6 +13,7 @@
   copy:
     src: "{{ item }}"
     dest: "~/.local/share/{{ item }}"
+    force: yes
   loop:
     - cows/fox.cow
     - cows/parrot.cow
@@ -21,6 +22,7 @@
   get_url:
     url: "https://raw.githubusercontent.com/rrerrNet/fortunes/master/{{ item }}"
     dest: "/usr/local/share/games/fortunes/{{ item }}"
+    force: yes
   loop:
     - rrerrnet
     - rrerrnet.dat
