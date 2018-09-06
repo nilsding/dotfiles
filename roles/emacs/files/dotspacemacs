@@ -57,6 +57,7 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(2048-game
                                       alert
+                                      crystal-mode
                                       groovy-mode
                                       minesweeper
                                       seeing-is-believing)
@@ -313,6 +314,11 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+
+  ;; Crystal
+  (autoload 'crystal-mode "crystal-mode" "Major mode for crystal files" t)
+  (add-to-list 'auto-mode-alist '("\\.cr$" . crystal-mode))
+  (add-to-list 'interpreter-mode-alist '("crystal" . crystal-mode))
 
   ;; Nice title bar in OSX
   (add-to-list 'default-frame-alist
