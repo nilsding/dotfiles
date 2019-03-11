@@ -1,2 +1,3 @@
 ---
+- import_tasks: "macos_font_smoothing.yml"
 - import_tasks: "input.yml"

@@ -1,0 +1,7 @@
+- name: "Make font smoothing nicer on macOS"
+  shell: |-
+    defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO
+
+# TODO: figure out if this is also necessary:
+#   defaults -currentHost write -globalDomain AppleFontSmoothing -int 3
+
