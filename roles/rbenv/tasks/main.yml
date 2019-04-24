@@ -1,11 +1,23 @@
 ---
+- set_fact:
+    ruby_build_dependencies:
+      - openssl
+      - libyaml
+  when: ansible_facts['system'] == 'Darwin'
+- set_fact:
+    ruby_build_dependencies:
+      - libopenssl-devel
+      - libyaml-devel
+      - readline-devel
+  when: ansible_facts['system'] != 'Darwin'
+
 - name: "Install build dependencies"
   package:
     name: "{{ item }}"
     state: present
-  loop:
-    - openssl
-    - libyaml
+  loop: "{{ ruby_build_dependencies }}"
+  become: "{{ 'false' if ansible_facts['system'] == 'Darwin' else 'true' }}"
+  become_user: root
 
 - name: "Checkout rbenv repo"
   git:

@@ -9,21 +9,51 @@
     - ncdu
     - p7zip
     - pngcrush
-    - screenresolution
     - the_silver_searcher
     - tmux
     - xmp
+  become: "{{ 'false' if ansible_facts['system'] == 'Darwin' else 'true' }}"
+  become_user: root
 
-- name: "Install applications from cask"
-  homebrew_cask:
-    name: "{{ item }}"
-    state: present
-  loop:
-    - firefox
-    - nextcloud
-    - postgres
-    - slack
-    - telegram
+- name: "SuSE Linux only stuff"
+  block:
+    - name: "Install base applications"
+      package:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - MozillaFirefox
+        - nextcloud-client
+        - telegram-desktop
+    - name: "Install C/C++ devel pattern"
+      zypper:
+        name: "devel_C_C++"
+        state: present
+        type: pattern
+  become: "{{ 'false' if ansible_facts['system'] == 'Darwin' else 'true' }}"
+  become_user: root
+  when: ansible_facts['system'] == 'Linux'
+
+- name: "macOS only stuff"
+  block:
+    - name: "Install macOS-only base packages"
+      package:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - screenresolution
+
+    - name: "Install applications from cask"
+      homebrew_cask:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - firefox
+        - nextcloud
+        - postgres
+        - slack
+        - telegram
+  when: ansible_facts['system'] == 'Darwin'
 
 - name: "Setup fun things"
   import_tasks: fun.yml

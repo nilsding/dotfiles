@@ -21,8 +21,22 @@
     recurse: true
   register: ttf_found
 
-- name: "Install TTF files to ~/Library/Fonts"
+- name: "Create {{ fonts_base_path }} if it does not exist"
+  file:
+    path: "{{ fonts_base_path }}"
+    state: directory
+    mode: "0755"
+  become: "{{ 'false' if ansible_facts['system'] == 'Darwin' else 'true' }}"
+  become_user: root
+
+- name: "Install TTF files to {{ fonts_base_path }}"
   copy:
     src: "{{ item.path }}"
-    dest: "~/Library/Fonts/{{ item.path | basename }}"
+    dest: "{{ fonts_base_path }}/{{ item.path | basename }}"
   loop: "{{ ttf_found.files }}"
+  become: "{{ 'false' if ansible_facts['system'] == 'Darwin' else 'true' }}"
+  become_user: root
+
+- name: "Update fontconfig caches"
+  shell: "fc-cache -fv"
+  when: ansible_facts['system'] != 'Darwin'

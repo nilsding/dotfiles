@@ -3,6 +3,8 @@
   package:
     name: "zsh"
     state: present
+  become: "{{ 'false' if ansible_facts['system'] == 'Darwin' else 'true' }}"
+  become_user: root
 
 - name: "Find zsh in $PATH"
   find:

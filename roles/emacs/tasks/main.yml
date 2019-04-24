@@ -1,8 +1,17 @@
 ---
+- name: "Install Emacs"
+  package:
+    name: emacs
+    state: present
+  become: true
+  become_user: root
+  when: ansible_facts['system'] == "Linux"
+
 - name: "Install Emacs from cask"
   homebrew_cask:
     name: emacs
     state: present
+  when: ansible_facts['system'] != "Linux"
 
 - name: "Checkout Spacemacs repo"
   git:
@@ -29,3 +38,8 @@
   file:
     path: "~/.spacemacs.d/user-config.el"
     state: touch
+
+- name: "Remove ~/.emacs init file"
+  file:
+    path: "~/.emacs"
+    state: absent
