@@ -43,3 +43,13 @@ alias e='/Applications/Emacs.app/Contents/MacOS/Emacs'
 alias em='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
 alias rot13="tr '[A-Za-z]' '[N-ZA-Mn-za-m]'"
 alias gmm='git merge master'
+
+alias ba='bundle add'
+alias be='bundle exec'
+alias bi='bundle install'
+alias br='bundle remove'
+
+{% if ansible_facts['system'] == 'Linux' %}
+# some additional sanity helpers for dealing with Linux
+alias open='xdg-open'
+{% endif %}
