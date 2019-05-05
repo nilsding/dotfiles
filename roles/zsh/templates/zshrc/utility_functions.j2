@@ -39,8 +39,11 @@ alias cd...='cd ...'
 alias cd....='cd ....'
 alias cd.....='cd .....'
 alias cd......='cd ......'
+{% if ansible_facts['system'] == 'Darwin' %}
 alias e='/Applications/Emacs.app/Contents/MacOS/Emacs'
-alias em='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
+{% else %}
+alias e='emacsclient -nw'
+{% endif %}
 alias rot13="tr '[A-Za-z]' '[N-ZA-Mn-za-m]'"
 alias gmm='git merge master'
 

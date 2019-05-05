@@ -43,3 +43,22 @@
   file:
     path: "~/.emacs"
     state: absent
+
+- name: "Configure Emacs-as-a-Service (EaaS)"
+  block:
+    - name: "Create Emacs SystemD service"
+      copy:
+        src: "emacs@.service"
+        dest: "/etc/systemd/system/emacs@.service"
+        force: true
+        mode: "0644"
+    - name: "Enable emacs@{{ ansible_user_id }} SystemD service"
+      systemd:
+        name: "emacs@{{ ansible_user_id }}"
+        daemon_reload: true
+        enabled: true
+        state: restarted
+  become: true
+  become: "{{ 'false' if ansible_facts['system'] == 'Darwin' else 'true' }}"
+  become_user: root
+  when: ansible_facts['system'] == 'Linux'
