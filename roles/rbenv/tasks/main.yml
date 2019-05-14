@@ -6,9 +6,10 @@
   when: ansible_facts['system'] == 'Darwin'
 - set_fact:
     ruby_build_dependencies:
-      - libopenssl-devel
+      - "{{ 'libopenssl-devel' if ansible_facts['distribution'] != 'Fedora' else 'openssl-devel' }}"
       - libyaml-devel
       - readline-devel
+      - zlib-devel
   when: ansible_facts['system'] != 'Darwin'
 
 - name: "Install build dependencies"

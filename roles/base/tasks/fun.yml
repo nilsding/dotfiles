@@ -4,7 +4,16 @@
   when: ansible_facts['system'] == 'Darwin'
 - set_fact:
     fortunes_base_path: "/usr/share/fortune"
-  when: ansible_facts['system'] != 'Darwin'
+  when: ansible_facts['system'] != 'Darwin' and ansible_facts['distribution'] != 'Fedora'
+- set_fact:
+    fortunes_base_path: "/usr/share/games/fortune"
+  when: ansible_facts['system'] != 'Darwin' and ansible_facts['distribution'] == 'Fedora'
+- set_fact:
+    fortune_package_name: fortune-mod
+  when: ansible_facts['distribution'] == 'Fedora'
+- set_fact:
+    fortune_package_name: fortune
+  when: ansible_facts['distribution'] != 'Fedora'
 
 - name: "Install fun packages"
   package:
@@ -13,7 +22,7 @@
   loop:
     - cowsay
     - figlet
-    - fortune
+    - "{{ fortune_package_name }}"
   become: "{{ 'false' if ansible_facts['system'] == 'Darwin' else 'true' }}"
   become_user: root
 

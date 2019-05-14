@@ -32,7 +32,7 @@
         type: pattern
   become: "{{ 'false' if ansible_facts['system'] == 'Darwin' else 'true' }}"
   become_user: root
-  when: ansible_facts['system'] == 'Linux'
+  when: ansible_facts['system'] == 'Linux' and ansible_facts['distribution'] == 'SUSE'
 
 - name: "macOS only stuff"
   block:
