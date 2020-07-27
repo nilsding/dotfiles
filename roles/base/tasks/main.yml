@@ -25,6 +25,7 @@
         - MozillaFirefox
         - nextcloud-client
         - telegram-desktop
+        - keepassxc
     - name: "Install C/C++ devel pattern"
       zypper:
         name: "devel_C_C++"
