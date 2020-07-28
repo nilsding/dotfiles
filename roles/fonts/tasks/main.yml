@@ -9,4 +9,7 @@
 - import_tasks: "macos_font_smoothing.yml"
   when: ansible_facts['system'] == 'Darwin'
 
+- import_tasks: "emoji.yml"
+  when: ansible_facts['system'] != 'Darwin'
+
 - import_tasks: "input.yml"
