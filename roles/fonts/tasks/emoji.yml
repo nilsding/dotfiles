@@ -11,6 +11,11 @@
   become: true
   become_user: root
 
+- name: "Create user-specific fontconfig config dir"
+  file:
+    path: "~/.config/fontconfig/conf.d"
+    state: directory
+
 - name: "Install fontconfig overrides for emoji usage"
   copy:
     src: "10-emoji.conf"
