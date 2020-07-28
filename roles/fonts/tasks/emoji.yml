@@ -11,6 +11,15 @@
   become: true
   become_user: root
 
+- name: "Uninstall unwanted fonts"
+  package:
+    name: "{{ item }}"
+    state: absent
+  loop:
+    - "google-roboto-fonts"
+  become: true
+  become_user: root
+
 - name: "Create user-specific fontconfig config dir"
   file:
     path: "~/.config/fontconfig/conf.d"
