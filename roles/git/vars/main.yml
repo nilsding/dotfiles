@@ -16,3 +16,5 @@ git:
   - { name: "alias.assumed", value: "!git ls-files -v | grep ^h | cut -c 3-" }
   - { name: "core.excludesfile", value: "~/.gitignore" }
   - { name: "rebase.autosquash", value: "true" }
+  - { name: "pull.rebase", value: "false" }
+  - { name: "init.defaultBranch", value: "main" }
