@@ -23,7 +23,7 @@
         state: present
       loop:
         - MozillaFirefox
-        - nextcloud-client
+        - seafile-client
         - telegram-desktop
         - keepassxc
     - name: "Install C/C++ devel pattern"
@@ -50,8 +50,8 @@
         state: present
       loop:
         - firefox
-        - nextcloud
         - postgres
+        - seafile-client
         - slack
         - telegram
   when: ansible_facts['system'] == 'Darwin'
