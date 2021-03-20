@@ -5,14 +5,12 @@
 # - some motivation on startup from the git post-receive fox
 # - path is autoshortened to ~30 characters
 # - displays git status (if applicable in current folder)
-# - openshift integration
 
-function oc_prompt_info() {
-  type oc >/dev/null 2>&1 || return 1
-  local oc_prompt
-  oc_prompt=$(oc project -q 2>/dev/null)
-  [[ "${oc_prompt}x" == "x" ]] && return 1
-  echo "${ZSH_THEME_OC_PROMPT_PREFIX:=(}${oc_prompt}${ZSH_THEME_OC_PROMPT_SUFFIX:=)}"
+function n_hostname_prompt_info() {
+  # only show hostname on ssh connections
+  if [[ "${SSH_CONNECTION}x" == "x" ]] return 1
+
+  echo " on %m"
 }
 
 function n_rbenv_prompt_info() {
@@ -44,7 +42,8 @@ echo $fg_bold[red]$separator$reset_color
 echo Have a lot of fun...
 
 # prompt
-PROMPT=$'%{\e[38;5;214m%}─[%{\e[38;5;255m%}%*%{$reset_color%} %{\e[38;5;39m%}%n%{\e[38;5;214m%}:%{\e[38;5;79m%}%30<...<%~%<<%{\e[38;5;214m%}]$(n_rbenv_prompt_info)$(oc_prompt_info)$(git_prompt_info)%{\e[38;5;214m%}─%{$reset_color%}
+
+PROMPT=$'%{\e[38;5;214m%}─[%{$reset_color%}%* %{\e[38;5;39m%}%n$(n_hostname_prompt_info)%{\e[38;5;214m%}:%{\e[38;5;79m%}%30<...<%~%<<%{\e[38;5;214m%}]$(n_rbenv_prompt_info)$(git_prompt_info)%{\e[38;5;214m%}─%{$reset_color%}
 %{\e[38;5;214m%}%(!.#.%%)%{$reset_color%} '
 RPROMPT=''
 
@@ -56,10 +55,6 @@ ZSH_THEME_GIT_PROMPT_DIRTY="%{\e[38;5;226m%}!%{\e[38;5;214m%}"
 # rbenv theming
 ZSH_THEME_RBENV_PROMPT_PREFIX='%{\e[38;5;214m%}─[%{\e[38;5;160m%}ruby:%{\033[38;5;161m%}'
 ZSH_THEME_RBENV_PROMPT_SUFFIX='%{\e[38;5;214m%}]'
-
-# oc theming
-ZSH_THEME_OC_PROMPT_PREFIX='%{\e[38;5;214m%}─[%{\e[38;5;166m%}os%{\e[38;5;172m%}:'
-ZSH_THEME_OC_PROMPT_SUFFIX='%{\e[38;5;214m%}]'
 
 # LS colors, made with http://geoff.greer.fm/lscolors/
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
