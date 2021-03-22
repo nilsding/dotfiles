@@ -1,0 +1,10 @@
+---
+
+- include_tasks: konsole.yml
+
+- name: "Update ini konfig files"
+  include_tasks: update_ini_konfig.yml
+  loop: '{{ kde_config_files | dict2items }}'
+
+- name: "Rebuild the system konfiguration cache"
+  shell: "kbuildsycoca5"

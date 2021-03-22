@@ -1,0 +1,11 @@
+---
+
+- name: "Install Konsole kolour scheme"
+  copy:
+    src: "konsole/Terminal.app Basic.colorscheme"
+    dest: "~/.local/share/konsole/Terminal.app Basic.colorscheme"
+
+- name: "Install Konsole profile"
+  copy:
+    src: "konsole/Basic.profile"
+    dest: "~/.local/share/konsole/Basic.profile"

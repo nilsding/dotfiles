@@ -1,0 +1,21 @@
+---
+
+# This hash contains all ini-based config switches in ~/.config.
+#
+# Basic structure:
+#   filename: { Section: { Key1: Value1, Key2: Value2, ... }, ... }
+kde_config_files:
+  kdeglobals:
+    General:
+      fixed: 'Input Mono,10,-1,5,50,0,0,0,0,0'
+      font: 'Bitstream Vera Sans,10,-1,5,50,0,0,0,0,0'
+      menuFont: 'Bitstream Vera Sans,10,-1,5,50,0,0,0,0,0'
+      smallestReadableFont: 'Bitstream Vera Sans,8,-1,5,50,0,0,0,0,0'
+      toolBarFont: 'Bitstream Vera Sans,10,-1,5,50,0,0,0,0,0'
+      XftHintStyle: 'hintfull'
+      XftSubPixel: 'none'
+
+  konsolerc:
+    Desktop Entry:
+      DefaultProfile: 'Basic.profile'
+

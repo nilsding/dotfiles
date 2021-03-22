@@ -1,0 +1,4 @@
+---
+
+- include_tasks: konfigure.yml
+  when: ansible_facts['system'] == 'Linux'

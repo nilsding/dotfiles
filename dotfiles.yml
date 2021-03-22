@@ -3,6 +3,7 @@
   roles:
     - base
     - fonts
+    - kde
     - emacs
     - git
     - zsh

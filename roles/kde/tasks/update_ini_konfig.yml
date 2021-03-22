@@ -1,0 +1,11 @@
+---
+# Nasty workaround because Ansible can't loop over blocks, which would be super
+# handy when handling nested hashes
+#
+# Kalled from: konfigure.yml
+
+- name: "Update konfig for {{ item.key }}"
+  include_tasks: update_ini_konfig_values.yml
+  loop: '{{ item.value | dict2items }}'
+  loop_control:
+    loop_var: konfig
