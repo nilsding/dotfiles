@@ -5,6 +5,16 @@
 # Basic structure:
 #   filename: { Section: { Key1: Value1, Key2: Value2, ... }, ... }
 kde_config_files:
+  dolphinrc:
+    Desktop Entry:
+      # embedded Konsole profile
+      DefaultProfile: 'Basic.profile'
+
+  katerc:
+    Desktop Entry:
+      # embedded Konsole profile
+      DefaultProfile: 'Basic.profile'
+
   kdeglobals:
     General:
       fixed: 'Input Mono,10,-1,5,50,0,0,0,0,0'
@@ -15,7 +25,21 @@ kde_config_files:
       XftHintStyle: 'hintfull'
       XftSubPixel: 'none'
 
+  kdeveloprc:
+    Desktop Entry:
+      # embedded Konsole profile
+      DefaultProfile: 'Basic.profile'
+
   konsolerc:
     Desktop Entry:
       DefaultProfile: 'Basic.profile'
 
+  krusaderrc:
+    Desktop Entry:
+      # embedded Konsole profile
+      DefaultProfile: 'Basic.profile'
+
+  oktetarc:
+    Desktop Entry:
+      # embedded Konsole profile
+      DefaultProfile: 'Basic.profile'
