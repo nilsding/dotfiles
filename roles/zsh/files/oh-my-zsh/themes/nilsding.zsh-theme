@@ -43,18 +43,37 @@ echo Have a lot of fun...
 
 # prompt
 
-PROMPT=$'%{\e[38;5;214m%}─[%{$reset_color%}%* %{\e[38;5;39m%}%n$(n_hostname_prompt_info)%{\e[38;5;214m%}:%{\e[38;5;79m%}%30<...<%~%<<%{\e[38;5;214m%}]$(n_rbenv_prompt_info)$(git_prompt_info)%{\e[38;5;214m%}─%{$reset_color%}
-%{\e[38;5;214m%}%(!.#.%%)%{$reset_color%} '
+# old colours:
+#separator_color=$'\e[38;5;214m'
+#userinfo_color=$'\e[38;5;39m'
+#dirinfo_color=$'\e[38;5;79m'
+#gitinfo_title_color=$'\e[38;5;077m'
+#gitinfo_branch_color=$'\e[38;5;078m'
+#gitinfo_dirty_color=$'\e[38;5;226m'
+#rubyinfo_title_color=$'\e[38;5;160m'
+#rubyinfo_current_color=$'\e[38;5;161m'
+
+separator_color=$'\e[0;38;5;214m'
+userinfo_color=$'\e[0;38;5;39m'
+dirinfo_color=$'\e[0;36m'
+gitinfo_title_color=$'\e[0;32m'
+gitinfo_branch_color=$'\e[0;32;1m'
+gitinfo_dirty_color=$'\e[36m'
+rubyinfo_title_color=$'\e[0;31m'
+rubyinfo_current_color=$'\e[0;31;1m'
+
+PROMPT=$'%{$separator_color%}─[%{$reset_color%}%* %{$userinfo_color%}%n$(n_hostname_prompt_info)%{$separator_color%}:%{$dirinfo_color%}%30<...<%~%<<%{$separator_color%}]$(n_rbenv_prompt_info)$(git_prompt_info)%{$separator_color%}─%{$reset_color%}
+%{$separator_color%}%(!.#.%%)%{$reset_color%} '
 RPROMPT=''
 
 # git theming
-ZSH_THEME_GIT_PROMPT_PREFIX='%{\e[38;5;214m%}─[%{\e[38;5;077m%}git:%{\033[38;5;078m%}'
-ZSH_THEME_GIT_PROMPT_SUFFIX='%{\e[38;5;214m%}]'
-ZSH_THEME_GIT_PROMPT_DIRTY="%{\e[38;5;226m%}!%{\e[38;5;214m%}"
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$separator_color%}─[%{$gitinfo_title_color%}git:%{$gitinfo_branch_color%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$separator_color%}]"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$gitinfo_dirty_color%}!%{$separator_color%}"
 
 # rbenv theming
-ZSH_THEME_RBENV_PROMPT_PREFIX='%{\e[38;5;214m%}─[%{\e[38;5;160m%}ruby:%{\033[38;5;161m%}'
-ZSH_THEME_RBENV_PROMPT_SUFFIX='%{\e[38;5;214m%}]'
+ZSH_THEME_RBENV_PROMPT_PREFIX="%{$separator_color%}─[%{$rubyinfo_title_color%}ruby:%{$rubyinfo_current_color%}"
+ZSH_THEME_RBENV_PROMPT_SUFFIX="%{$separator_color%}]"
 
 # LS colors, made with http://geoff.greer.fm/lscolors/
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
