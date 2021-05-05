@@ -6,6 +6,8 @@ ColorScheme=Terminal.app Basic
 Name=Basic
 Parent=FALLBACK/
 StartInCurrentSessionDir=false
+TerminalCenter=true
+TerminalMargin=1
 
 [Interaction Options]
 UnderlineFilesEnabled=true
