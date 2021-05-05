@@ -75,7 +75,7 @@ kde_config_files:
     KTextEditor Renderer:
       Animate Bracket Matching: 'true'
       Auto Color Theme Selection: 'true'
-      Color Theme: 'Breeze Light'
+      Color Theme: 'Spacemacs-like'
       Font: 'Input Mono,10,-1,5,50,0,0,0,0,0'
       Show Indentation Lines: 'true'
       Show Whole Bracket Expression: 'false'
