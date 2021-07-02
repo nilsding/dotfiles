@@ -1,4 +1,21 @@
 ---
+- name: "Install Packman repository from THE INTERNET (aka WWW)"
+  zypper_repository:
+    name: packman
+    repo: https://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/
+    state: present
+    auto_import_keys: yes
+  become: yes
+  register: packman_repo
+
+- name: "Do a system upgrade with vendor change"
+  zypper:
+    name: "*"
+    state: dist-upgrade # TODO: only do a dist upgrade on Tumbleweed
+    extra_args: "--from packman --allow-vendor-change"
+  become: yes
+  when: packman_repo.changed
+
 - name: "Install base applications"
   package:
     name:
@@ -7,9 +24,11 @@
       - telegram-desktop
       - keepassxc
     state: present
+  become: yes
 
 - name: "Install C/C++ devel pattern"
   zypper:
     name: "devel_C_C++"
     state: present
     type: pattern
+  become: yes
