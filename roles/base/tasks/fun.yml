@@ -8,12 +8,11 @@
 
 - name: "Install fun packages"
   package:
-    name: "{{ item }}"
+    name:
+      - cowsay
+      - figlet
+      - fortune
     state: present
-  loop:
-    - cowsay
-    - figlet
-    - fortune
   become: "{{ 'false' if ansible_facts['system'] == 'Darwin' else 'true' }}"
   become_user: root
 

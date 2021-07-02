@@ -3,20 +3,19 @@
 
 - name: "Install required fonts"
   package:
-    name: "{{ item }}"
+    name:
+      - "bitstream-vera-fonts"
+      - "twemoji-color-font"
     state: present
   loop:
-    - "bitstream-vera-fonts"
-    - "twemoji-color-font"
   become: true
   become_user: root
 
 - name: "Uninstall unwanted fonts"
   package:
-    name: "{{ item }}"
+    name:
+      - "google-roboto-fonts"
     state: absent
-  loop:
-    - "google-roboto-fonts"
   become: true
   become_user: root
 

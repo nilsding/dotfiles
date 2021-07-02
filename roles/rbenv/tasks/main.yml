@@ -13,9 +13,8 @@
 
 - name: "Install build dependencies"
   package:
-    name: "{{ item }}"
+    name: "{{ ruby_build_dependencies }}"
     state: present
-  loop: "{{ ruby_build_dependencies }}"
   become: "{{ 'false' if ansible_facts['system'] == 'Darwin' else 'true' }}"
   become_user: root
 
