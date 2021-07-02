@@ -32,3 +32,16 @@
     state: present
     type: pattern
   become: yes
+
+- name: "Install some codecs"
+  package:
+    name:
+      - ffmpeg
+      - lame
+      - gstreamer-plugins-bad
+      - gstreamer-plugins-ugly
+      - gstreamer-plugins-ugly-orig-addon
+      - gstreamer-plugins-libav
+      - vlc-codecs
+    state: present
+  become: yes
