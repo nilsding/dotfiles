@@ -39,7 +39,7 @@ alias cd...='cd ...'
 alias cd....='cd ....'
 alias cd.....='cd .....'
 alias cd......='cd ......'
-{% if ansible_facts['system'] == 'Darwin' %}
+{% if ansible_system == 'Darwin' %}
 alias e='/Applications/Emacs.app/Contents/MacOS/Emacs'
 {% else %}
 alias e='emacsclient -nw'
@@ -52,7 +52,7 @@ alias be='bundle exec'
 alias bi='bundle install'
 alias br='bundle remove'
 
-{% if ansible_facts['system'] == 'Linux' %}
+{% if ansible_system == 'Linux' %}
 # some additional sanity helpers for dealing with Linux
 alias open='xdg-open'
 {% endif %}
