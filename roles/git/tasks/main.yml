@@ -3,7 +3,7 @@
   package:
     name: "git"
     state: present
-  become: "{{ 'false' if ansible_facts['system'] == 'Darwin' else 'true' }}"
+  become: "{{ 'false' if ansible_system == 'Darwin' else 'true' }}"
   become_user: root
 
 - name: "Set global git configuration"
