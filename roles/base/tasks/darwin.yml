@@ -1,16 +1,8 @@
 ---
-- name: "Install macOS-only base packages"
-  package:
-    name:
-      - screenresolution
-    state: present
-
 - name: "Install applications from cask"
   homebrew_cask:
     name:
       - firefox
-      - postgres
-      - seafile-client
-      - slack
       - telegram
+      - element
     state: present
