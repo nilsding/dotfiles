@@ -1,0 +1,30 @@
+[Appearance]
+BoldIntense=false
+ColorScheme=Terminal.app Basic
+{% if ansible_system == 'Darwin' %}
+Font=Input Mono,12,-1,5,50,0,0,0,0,0
+{% endif %}
+
+[General]
+{% if ansible_system == 'Darwin' %}
+{# need to start a login shell for homebrew to load up correctly #}
+Command={{ ansible_user_shell }} -l
+{# for some reason konsole does not start up in the user dir on (homebrew-installed) macOS, need to find out why #}
+Directory={{ ansible_user_dir }}
+{% endif %}
+Name=Basic
+Parent=FALLBACK/
+StartInCurrentSessionDir=false
+TerminalCenter=true
+TerminalMargin=1
+
+[Interaction Options]
+UnderlineFilesEnabled=true
+
+{% if ansible_system == 'Darwin' %}
+[Keyboard]
+KeyBindings=macos
+{% endif %}
+
+[Scrolling]
+HistoryMode=2

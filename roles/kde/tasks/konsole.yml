@@ -6,6 +6,6 @@
     dest: "{{ data_home }}/konsole/Terminal.app Basic.colorscheme"
 
 - name: "Install Konsole profile"
-  copy:
-    src: "konsole/Basic.profile"
+  template:
+    src: "konsole/Basic.profile.j2"
     dest: "{{ data_home }}/konsole/Basic.profile"

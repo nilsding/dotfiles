@@ -7,5 +7,6 @@
 - name: "Update konfig for {{ item.key }}"
   include_tasks: update_ini_konfig_values.yml
   loop: '{{ item.value | dict2items }}'
+  when: item.key not in ignored_konfig_files
   loop_control:
     loop_var: konfig

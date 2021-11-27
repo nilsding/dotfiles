@@ -3,3 +3,14 @@
 
 data_home: "~/Library/Application Support"
 config_home: "~/Library/Preferences"
+
+font_fixed: 'Input Mono,12,-1,5,50,0,0,0,0,0'
+font_text: 'Helvetica Neue,12,-1,5,50,0,0,0,0,0'
+font_small: 'Helvetica Neue,10,-1,5,50,0,0,0,0,0'
+
+ignored_konfig_files:
+- dolphinrc
+- kdeglobals
+- kdeveloprc
+- krusaderrc
+- oktetarc

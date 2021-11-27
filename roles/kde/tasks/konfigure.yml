@@ -1,5 +1,8 @@
 ---
 
+- name: "Include konfig vars"
+  include_vars: "konfig.yml"
+
 - include_tasks: konsole.yml
 
 - name: "Ensure syntax highlighting themes directory exist"
