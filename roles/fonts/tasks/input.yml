@@ -6,7 +6,7 @@
 
 - name: "Download Input font with monaco configuration"
   get_url:
-    url: "http://input.fontbureau.com/build/?fontSelection=whole&a=ss&g=ss&i=serifs&l=serifs&zero=slash&asterisk=0&braces=0&preset=monaco&line-height=1.2&accept=I+do&email="
+    url: "https://input.djr.com/build/?fontSelection=whole&a=ss&g=ss&i=serifs&l=serifs&zero=slash&asterisk=0&braces=0&preset=monaco&line-height=1.2&accept=I+do&email="
     dest: "{{ tmpdir.path }}/input.zip"
   
 - name: "Unpack Input font"
