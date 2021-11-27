@@ -1,7 +1,10 @@
 ---
 - set_fact:
     fortunes_base_path: "/usr/local/share/games/fortunes"
-  when: ansible_system == 'Darwin'
+  when: ansible_system == 'Darwin' and ansible_architecture != 'arm64'
+- set_fact:
+    fortunes_base_path: "/opt/homebrew/share/games/fortunes"
+  when: ansible_system == 'Darwin' and ansible_architecture == 'arm64'
 - set_fact:
     fortunes_base_path: "/usr/share/fortune"
   when: ansible_system != 'Darwin'
