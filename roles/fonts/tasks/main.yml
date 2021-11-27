@@ -1,15 +1,15 @@
 ---
 - set_fact:
     fonts_base_path: "~/Library/Fonts"
-  when: ansible_facts['system'] == 'Darwin'
+  when: ansible_system == 'Darwin'
 - set_fact:
     fonts_base_path: "/usr/local/share/fonts/ansible_managed"
-  when: ansible_facts['system'] != 'Darwin'
+  when: ansible_system != 'Darwin'
 
 - import_tasks: "macos_font_smoothing.yml"
-  when: ansible_facts['system'] == 'Darwin'
+  when: ansible_system == 'Darwin'
 
 - import_tasks: "emoji.yml"
-  when: ansible_facts['system'] != 'Darwin'
+  when: ansible_system != 'Darwin'
 
 - import_tasks: "input.yml"

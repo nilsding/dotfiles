@@ -26,7 +26,7 @@
     path: "{{ fonts_base_path }}"
     state: directory
     mode: "0755"
-  become: "{{ 'false' if ansible_facts['system'] == 'Darwin' else 'true' }}"
+  become: "{{ 'false' if ansible_system == 'Darwin' else 'true' }}"
   become_user: root
 
 - name: "Install TTF files to {{ fonts_base_path }}"
@@ -34,9 +34,9 @@
     src: "{{ item.path }}"
     dest: "{{ fonts_base_path }}/{{ item.path | basename }}"
   loop: "{{ ttf_found.files }}"
-  become: "{{ 'false' if ansible_facts['system'] == 'Darwin' else 'true' }}"
+  become: "{{ 'false' if ansible_system == 'Darwin' else 'true' }}"
   become_user: root
 
 - name: "Update fontconfig caches"
   shell: "fc-cache -fv"
-  when: ansible_facts['system'] != 'Darwin'
+  when: ansible_system != 'Darwin'
