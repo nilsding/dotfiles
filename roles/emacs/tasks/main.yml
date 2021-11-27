@@ -5,13 +5,13 @@
     state: present
   become: true
   become_user: root
-  when: ansible_facts['system'] == "Linux"
+  when: ansible_system == "Linux"
 
 - name: "Install Emacs from cask"
   homebrew_cask:
     name: emacs
     state: present
-  when: ansible_facts['system'] != "Linux"
+  when: ansible_system != "Linux"
 
 - name: "Checkout Spacemacs repo"
   git:
