@@ -1,4 +1,6 @@
 ---
 
+- name: "Include OS-specific vars"
+  include_vars: "{{ ansible_facts['system'] | lower }}.yml"
+
 - include_tasks: konfigure.yml
-  when: ansible_facts['system'] == 'Linux'

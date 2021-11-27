@@ -1,0 +1,5 @@
+---
+# vars for any Linux hosts
+
+data_home: "~/.local/share"
+config_home: "~/.config"

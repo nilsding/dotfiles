@@ -4,13 +4,13 @@
 
 - name: "Ensure syntax highlighting themes directory exist"
   file:
-    dest: '~/.local/share/org.kde.syntax-highlighting/themes'
+    dest: '{{ data_home }}/org.kde.syntax-highlighting/themes'
     state: directory
 
 - name: "Install Spacemacs-like syntax highlighting theme"
   copy:
     src: Spacemacs-like.theme
-    dest: '~/.local/share/org.kde.syntax-highlighting/themes/Spacemacs-like.theme'
+    dest: '{{ data_home }}/org.kde.syntax-highlighting/themes/Spacemacs-like.theme'
 
 - name: "Update ini konfig files"
   include_tasks: update_ini_konfig.yml

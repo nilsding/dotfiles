@@ -6,7 +6,7 @@
 
 - name: "Update konfig for {{ item.key }} : {{ konfig.key }}"
   ini_file:
-    path: "~/.config/{{ item.key}}"
+    path: "{{ config_home }}/{{ item.key }}"
     section: '{{ konfig.key }}'
     option: '{{ konfig_entry.key }}'
     value: '{{ konfig_entry.value }}'

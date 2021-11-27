@@ -1,0 +1,5 @@
+---
+# vars for any macOS hosts
+
+data_home: "~/Library/Application Support"
+config_home: "~/Library/Preferences"
