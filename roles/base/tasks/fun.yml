@@ -1,10 +1,10 @@
 ---
 - set_fact:
     fortunes_base_path: "/usr/local/share/games/fortunes"
-  when: ansible_facts['system'] == 'Darwin'
+  when: ansible_system == 'Darwin'
 - set_fact:
     fortunes_base_path: "/usr/share/fortune"
-  when: ansible_facts['system'] != 'Darwin'
+  when: ansible_system != 'Darwin'
 
 - name: "Install fun packages"
   package:
@@ -13,7 +13,7 @@
       - figlet
       - fortune
     state: present
-  become: "{{ 'false' if ansible_facts['system'] == 'Darwin' else 'true' }}"
+  become: "{{ 'false' if ansible_system == 'Darwin' else 'true' }}"
   become_user: root
 
 - name: "Create custom cows dir"
@@ -37,7 +37,7 @@
     force: yes
   loop:
     - rrerrnet
-  become: "{{ 'false' if ansible_facts['system'] == 'Darwin' else 'true' }}"
+  become: "{{ 'false' if ansible_system == 'Darwin' else 'true' }}"
   become_user: root
 
 - name: "Compile rrerrNet fortunes strfile"
@@ -46,5 +46,5 @@
     chdir: "{{ fortunes_base_path }}"
   loop:
     - rrerrnet
-  become: "{{ 'false' if ansible_facts['system'] == 'Darwin' else 'true' }}"
+  become: "{{ 'false' if ansible_system == 'Darwin' else 'true' }}"
   become_user: root
