@@ -9,6 +9,7 @@ zsh_omz_plugins:
 - gem
 - rbenv
 - ruby
+- rust
 - tmux
 - sudo
 - z
