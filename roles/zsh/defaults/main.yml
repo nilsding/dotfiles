@@ -1,0 +1,15 @@
+---
+
+# List of oh-my-zsh plug-ins to enable
+zsh_omz_plugins:
+- git
+- rails
+- cp
+- git
+- gem
+- rbenv
+- ruby
+- tmux
+- sudo
+- z
+- zsh-syntax-highlighting
