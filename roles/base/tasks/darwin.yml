@@ -5,6 +5,7 @@
       - firefox
       - telegram
       - element
+      - xquartz
     state: present
 
 - name: "Configure NFS"
