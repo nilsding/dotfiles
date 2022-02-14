@@ -1,0 +1,14 @@
+# {{ ansible_managed }}
+
+#
+# nfs.conf: the NFS configuration file
+#
+
+# Always convert name strings to Unicode Normalisation Form C (NFC) when
+# sending them to the NFS server.  This is to improve support with Linux-based
+# NFS servers that normalise Unicode differently to what Mac OS expects
+# (apparently NFD).
+#
+# See also:
+# https://discussions.apple.com/thread/3298804?answerId=21199204022#21199204022
+nfs.client.mount.options = nfc
