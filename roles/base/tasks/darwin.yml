@@ -17,3 +17,22 @@
     mode: '0644'
   become: yes
   become_user: root
+
+##################################
+# install EurKEY keyboard layout #
+##################################
+
+- set_fact:
+    eurkey_commit: "05cdbd33771d5f17f7225d63960712163df5744b"
+    eurkey_repo: "jonasdiemer/EurKEY-Mac"
+
+- name: "Install EurKEY keyboard layout"
+  ansible.builtin.get_url:
+    url: "https://raw.githubusercontent.com/{{ eurkey_repo }}/{{ eurkey_commit }}/{{ item }}"
+    dest: "/Library/Keyboard Layouts/{{ item }}"
+    force: yes
+  loop:
+    - "EurKEY.keylayout"
+    - "EurKEY.icns"
+  become: yes
+  become_user: root
