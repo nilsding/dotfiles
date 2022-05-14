@@ -36,3 +36,14 @@
     - "EurKEY.icns"
   become: yes
   become_user: root
+
+############
+# defaults #
+############
+
+- name: "Allow dragging the window anywhere by holding down ⌃⌘"
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: NSWindowShouldDragOnGesture
+    type: bool
+    value: true
