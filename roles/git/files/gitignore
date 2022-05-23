@@ -171,3 +171,6 @@ Session.vim
 tags
 # Persistent undo
 [._]*.un~
+
+# Kate swap files
+*.kate-swp
