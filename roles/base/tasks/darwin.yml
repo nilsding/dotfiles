@@ -47,3 +47,16 @@
     key: NSWindowShouldDragOnGesture
     type: bool
     value: true
+
+#####################################
+# allow sudo unlocking via Touch ID #
+#####################################
+
+- name: "Configure sudo PAM policy to unlock with Touch ID"
+  ansible.builtin.lineinfile:
+    path: /etc/pam.d/sudo
+    line: 'auth       sufficient     pam_tid.so'
+    insertafter: '^# '
+    firstmatch: yes
+  become: yes
+  become_user: root
