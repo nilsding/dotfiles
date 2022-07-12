@@ -1,7 +1,0 @@
-if RUBY_VERSION > "2.2"
-  begin
-    require "irbtools/more"
-  rescue LoadError
-    require "irbtools"
-  end
-end

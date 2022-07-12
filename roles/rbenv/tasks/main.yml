@@ -45,11 +45,10 @@
     dest: "~/.gemrc"
     force: false
 
-- name: "Install irbrc"
-  copy:
-    src: "irbrc"
-    dest: "~/.irbrc"
-    force: false
+- name: "Remove irbrc"
+  file:
+    path: "~/.irbrc"
+    state: absent
 
 - name: "Install rubies"
   shell: |-
