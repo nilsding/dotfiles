@@ -5,11 +5,7 @@
                 "selected-text-color": "#ba2f59",
                 "text-color": "#ba2f59"
             },
-            "Delimiter": {
-                "bold": false
-            },
             "Kernel methods": {
-                "bold": false,
                 "selected-text-color": "#3a81c3",
                 "text-color": "#3a81c3"
             },
@@ -18,7 +14,6 @@
                 "text-color": "#655370"
             },
             "Operator": {
-                "bold": false,
                 "selected-text-color": "#655370",
                 "text-color": "#655370"
             },
@@ -33,7 +28,6 @@
         },
         "Rust": {
             "Attribute": {
-                "bold": false,
                 "selected-text-color": "#6c3163",
                 "text-color": "#6c3163"
             },
@@ -211,12 +205,8 @@
             "text-color": "#2d9574"
         },
         "Variable": {
-            "bold": true,
-            "italic": true,
-            "selected-text-color": "#00ff7f",
-            "strike-through": true,
-            "text-color": "#00ff7f",
-            "underline": true
+            "selected-text-color": "#6c3163",
+            "text-color": "#6c3163"
         },
         "VerbatimString": {
             "selected-text-color": "#2d9574",

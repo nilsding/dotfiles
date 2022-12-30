@@ -74,7 +74,7 @@ kde_config_files:
       Word Wrap Column: '80'
     KTextEditor Renderer:
       Animate Bracket Matching: 'true'
-      Auto Color Theme Selection: 'true'
+      Auto Color Theme Selection: 'false'
       Color Theme: 'Spacemacs-like'
       Font: '{{ font_fixed }}'
       Show Indentation Lines: 'true'

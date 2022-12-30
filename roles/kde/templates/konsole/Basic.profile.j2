@@ -9,7 +9,7 @@ Font=Input Mono,12,-1,5,50,0,0,0,0,0
 {% if ansible_system == 'Darwin' %}
 {# need to start a login shell for homebrew to load up correctly #}
 Command={{ ansible_user_shell }} -l
-{# for some reason konsole does not start up in the user dir on (homebrew-installed) macOS, need to find out why #}
+{# for some reason konsole does not start up in the user dir on macOS, need to find out why #}
 Directory={{ ansible_user_dir }}
 {% endif %}
 Name=Basic
