@@ -45,3 +45,13 @@
       - vlc-codecs
     state: present
   become: yes
+
+- name: "Swap option+cmd on connected Apple keyboards"
+  ansible.builtin.copy:
+    content: |
+      options hid_apple swap_opt_cmd=1
+    dest: "/etc/modprobe.d/90-hid-apple.conf"
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+  become: yes
