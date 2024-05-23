@@ -1,7 +1,7 @@
 ---
 git:
   gitconfig:
-  - { name: "user.name", value: "Georg Gadinger" }
+  - { name: "user.name", value: "Jyrki Gadinger" }
   - { name: "user.email", value: "nilsding@nilsding.org" }
   - { name: "push.default", value: "simple" }
   - { name: "url.https://github.com/.insteadof", value: "gh:" }
